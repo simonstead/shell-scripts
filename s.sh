@@ -51,31 +51,31 @@ function style() {
     cat <<- _EOF_
 :local(.$name) {
 
-    }
+}
 _EOF_
 }
 
 
 function redux_container() {
     cat <<- _EOF_
-    import React from 'react'
-    import { connect } from 'react-redux'
-    import styles from './styles.scss'
+import React from 'react'
+import { connect } from 'react-redux'
+import styles from './styles.scss'
 
-    const testAction = () => dispatch => dispatch({
-        type: 'TEST_ACTION'
-    })
+const testAction = () => dispatch => dispatch({
+    type: 'TEST_ACTION'
+})
 
-    export const $name = ({ onClick}) => <div className={styles.$name}>
-        <h1>$name</h1>
-        <button onClick={onClick} >Click</button>
-    </div>
+export const $name = ({ onClick}) => <div className={styles.$name}>
+  <h1>$name</h1>
+  <button onClick={onClick} >Click</button>
+</div>
 
-    const mapStateToProps = state => ({})
+const mapStateToProps = state => ({})
 const mapDispatchToProps = {
-    onClick: testAction
+  onClick: testAction
 }
-    export default connect(mapStateToProps, mapDispatchToProps)($name)
+export default connect(mapStateToProps, mapDispatchToProps)($name)
 _EOF_
 }
 
@@ -97,7 +97,7 @@ function generate_reducer() {
 const initialState = {}
 
 const actionHandlers = {
-    TEST_ACTION: (state, payload) => {...state, ...payload} 
+TEST_ACTION: (state, payload) => ({...state, ...payload})
 }
 
 export const reducer = (state = initialState, {type, payload}) => actionHandlers[type] ? actionHandlers[type](state, payload) : state
