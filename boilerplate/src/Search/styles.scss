@@ -1,0 +1,54 @@
+@import "../Shared/styles";
+
+:local(.hideSearch) {
+  display: none;
+}
+
+:local(.SearchBar) {
+  display: flex;
+  margin: 1em;
+
+  & .fa-search {
+    padding: 1em;
+    background-color: $dark-blue;
+    color: white;
+    border: 1px solid $dark-blue;
+  }
+}
+
+:local(.SearchBox) {
+  border: 0px;
+  padding: 0.75em 0 0.75em 1em;
+  width: stretch;
+  color: $dark-blue;
+  background-color: white;
+  border: 1px solid $dark-blue;
+
+  &:focus {
+    border: 0;
+    outline: 2px solid $dark-blue;
+  }
+}
+
+:local(.SearchBox):focus,
+:local(.SearchBox):active,
+:local(.SearchBar):focus,
+:local(.SearchBar):active {
+  z-index: 1;
+  filter: brightness(120%);
+}
+
+@media only screen and (max-width: 760px) {
+  :local(.SearchBox) {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 760px) {
+  :local(.SearchBar) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+  }
+}

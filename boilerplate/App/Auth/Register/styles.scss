@@ -1,0 +1,44 @@
+@import "../../Shared/styles";
+
+:local(.Register) {
+  & h1 {
+    color: white;
+    padding: 0 1rem;
+  }
+  & > *:first-child {
+    color: white;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 1em;
+  }
+
+  & a {
+    text-decoration: none;
+    width: fit-content;
+    margin-top: 1.5em;
+    color: white;
+  }
+
+  & select {
+    padding: 1em;
+    border: 2px solid $green;
+    font-size: 14px;
+  }
+}
+
+:local(.ButtonContainer) {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: 1em;
+}
+
+@media only screen and (min-width: 960px) {
+  :local(.Register) > * {
+    width: 75%;
+  }
+
+  :local(.ButtonContainer) {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1em;
+  }
+}

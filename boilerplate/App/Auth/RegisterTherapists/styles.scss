@@ -1,0 +1,13 @@
+:local(.Header) {
+  font-weight: 300;
+  color: white;
+  background-color: transparent;
+  border: 1px solid;
+  margin: 1rem;
+  padding: 1rem;
+  width: fit-content;
+}
+
+:local(.Form) {
+  margin-bottom: 10em;
+}

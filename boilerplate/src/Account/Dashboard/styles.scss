@@ -1,0 +1,237 @@
+@import "../../Shared/styles";
+
+:local(.DashboardWrapper) {
+  display: flex;
+  flex-wrap: wrap;
+  & > * {
+    width: 100%;
+  }
+  @media only screen and (min-width: 768px) {
+    max-width: 960px;
+    margin: 0 auto;
+    & > * {
+      margin: 1em;
+      min-width: 30%;
+    }
+  }
+}
+
+:local(.Title) {
+  margin: 0.5em 0 1em 0;
+}
+
+:local(.Dashboard) {
+  margin: 1em 0 1em 0;
+  padding: 1em;
+  border-radius: 0;
+  @media only screen and (min-width: 900px) {
+    width: calc(50% - 2em);
+    margin: 0;
+    border-radius: 0px;
+  }
+
+  background-color: $dark-blue;
+  border-radius: 3px;
+  color: white;
+
+  & h2 {
+    padding: 0.5em 1em;
+    font-size: 2em;
+    background-color: transparent;
+  }
+
+  & i {
+    width: 100%;
+    text-align: right;
+    padding-right: 1em;
+  }
+}
+
+:local(.Dashboard) a {
+  color: white;
+  text-decoration: none;
+  border-bottom: 0;
+  margin: 0;
+  display: inline-block;
+  bottom: 0;
+  right: 0;
+  padding-right: 1em;
+  width: 100%;
+}
+
+:local(.LargeLink) {
+  font-size: 2em;
+}
+:local(.Dashboard) a:focus,
+:local(.Dashboard) a:hover {
+  outline-color: #ccc;
+}
+
+:local(.Container) {
+  margin: 0 1em;
+}
+
+@media only screen and (max-width: 700px) {
+  :local(.Dashboard) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+:local(.Hello) {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  :local(.Hello) {
+    display: inline-block;
+    font-size: 3em;
+    background-color: $dark-blue;
+    margin: 0.5em 0;
+    color: white;
+    padding: 1em;
+  }
+}
+
+:local(.Then) {
+  background-color: $green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1em 1em 2em 1em;
+  color: white;
+  position: relative;
+
+  & h1 {
+    padding: 0;
+    font-size: 10em;
+    background-color: transparent;
+    margin: -2.5rem 0;
+  }
+
+  & a {
+    color: white;
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+  }
+
+  & p:first-child {
+    margin-top: 0em;
+  }
+}
+
+:local(.Card) {
+  margin: 0;
+  width: 100%;
+
+  @media only screen and (min-width: 600px) {
+    width: calc(50% - 5em);
+  }
+
+  @media only screen and (min-width: 768px) {
+    max-height: 20em;
+    max-width: 20em;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.025);
+  }
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  padding: 2.5em;
+  font-size: 1.5em;
+  color: black;
+  text-decoration: none;
+  border-radius: 1px;
+  //
+  // &:hover {
+  //   cursor: pointer;
+  //   position: relative;
+  //   left: -1px;
+  //   top: 1px;
+  // }
+
+  & i {
+    display: block;
+    padding-bottom: 1rem;
+  }
+}
+
+:local(.Settings) {
+  @extend :local(.Card);
+  color: white;
+  background: black;
+}
+
+:local(.Therapist) {
+  @extend :local(.Card);
+  background-color: $dark-blue;
+  color: white;
+}
+
+:local(.ToDo) {
+  background-color: rgba(0, 0, 0, 0.025);
+  margin: 1em 0;
+  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.125);
+
+  @media only screen and (min-width: 900px) {
+    width: 50%;
+    margin: 0;
+  }
+
+  & h1 {
+    color: $dark-blue;
+    padding: 0;
+    margin: 1em;
+    background: transparent;
+    font-weight: 400;
+  }
+
+  & ul {
+    list-style: none;
+    padding: 0 1em;
+    margin: 0;
+    & li {
+      margin: 1em;
+    }
+  }
+
+  & a {
+    color: $dark-blue;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    font-size: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
+    & span {
+      padding-bottom: 0.5rem;
+      width: stretch;
+    }
+    & i {
+      margin: 1em 0 1em 2em;
+    }
+  }
+}
+
+:local(.BookASesson) {
+  background: $green;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  & p {
+    margin: 1em 0;
+    background-color: transparent;
+    color: white;
+  }
+
+  & a {
+    text-align: center;
+  }
+}

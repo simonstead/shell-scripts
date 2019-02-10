@@ -1,0 +1,20 @@
+@import "../../../Shared/styles";
+
+:local(.ProfilePhoto) {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  justify-content: center;
+
+  & img {
+    border: 2px solid $green;
+    max-height: 50vh;
+  }
+}
+
+:local(.ChooseImage) {
+  @extend :local(.Button);
+  & > input {
+    display: none;
+  }
+}

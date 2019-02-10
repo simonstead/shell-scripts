@@ -20,43 +20,9 @@ echo "welcome to react-scaffold"
 echo "available commands:"
 echo "generate (g)"
 echo "// :Usage: //"
-echo "react-scaffold <command=[generate]> <type=[simple | connected | form]> <name> [--reducer, --pages=<int>, --api=<str>]"
+echo "react-scaffold <command=[generate]> <type=[simple | connected | form | app]> <name> [--reducer, --pages=<int>, --api=<str>]"
 }
 
-name=$3
-type=$2
-command=$1
-
-if [ "$1" == "--help" -o "$1" == "-h" ]; then
-    usage
-    exit 1;
-fi
-
-if [ "$1" != "g" ]  && [ "$1" != "generate" ]; then
-    echo "available commands [generate (g)]"
-    usage
-    exit 1;
-fi
-
-if [ "$2" != "simple" -a "$2" != "connected" -a "$2" != "form"]; then
-    echo $2 "not understood. Use one of [ simple | connected | form ]"
-    usage
-    exit 1;
-fi
-
-
-while [ "$4" != "" ]; do
-    case "$4" in
-        "--reducer") reducer='true';;
-        "--pages")  shift
-                    pages=$4
-                    ;;
-        "--api")  shift
-                    api_url=$4
-                    ;;
-    esac
-    shift
-done
 
 function style() {
     cat <<- _EOF_
@@ -154,15 +120,15 @@ export default reducer
 _EOF_
 }
 
-function generate() {
-    if [[ -d $name ]]; then
-      echo "director already exists"
+function generate_components() {
+    if [[ ! -d "./src" ]]; then
+      echo "Use this from the project root to make sure you don't fuck anything up"
       exit 1;
     fi
 
     echo "creating directory" $name
-    mkdir $name
-    cd $name
+    mkdir -p src/$name
+    cd src/$name
 
     if [ "$type" = "simple" ]; then
         echo "scaffolding simple component..."
@@ -191,5 +157,75 @@ function generate() {
     echo "Done!"
 }
 
+function generate_app() {
+  echo "stuff"
 
-generate
+  # create-react-app $name
+  mkdir $name
+  cd $name
+  #
+  # yarn add classnames moment moment-range node-sass react react-big-calendar react-dom react-dropzone react-ga react-markdown react-redux react-router react-router-dom react-stripe-elements redux redux-form redux-localstorage redux-promise-middleware redux-segment redux-sessionstorage redux-thunk
+
+  touch .env .prettierrc
+
+  mv *.css *.scss
+
+  mkdir -p src/
+
+  cp -r /Users/simonstead/code/shell-scripts/boilerplate src/App
+
+
+
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+name=$3
+type=$2
+command=$1
+
+if [ "$1" == "--help" -o "$1" == "-h" ]; then
+    usage
+    exit 1;
+fi
+
+if [ "$1" != "g" ]  && [ "$1" != "generate" ]; then
+    echo "available commands [generate (g)]"
+    usage
+    exit 1;
+fi
+
+if [ "$2" != "simple" ] && [ "$2" != "connected" ] && [ "$2" != "form" ] && [ "$2" != "app" ]; then
+    echo $2 "not understood. Use one of [ simple | connected | form | app]"
+    usage
+    exit 1;
+fi
+
+
+while [ "$4" != "" ]; do
+    case "$4" in
+        "--reducer") reducer='true';;
+        "--pages")  shift
+                    pages=$4
+                    ;;
+        "--api")  shift
+                    api_url=$4
+                    ;;
+    esac
+    shift
+done
+
+if [[ -d $name ]]; then
+  echo "directory already exists"
+  exit 1;
+fi
+
+if [ "$1" == "g" -o "$1" == "generate" ] && [ "$2" == "app" ]; then
+  echo "***Scaffolding new application $name"
+  generate_app
+else
+  generate
+fi

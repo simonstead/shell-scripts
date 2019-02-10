@@ -1,0 +1,64 @@
+@import "../../../Shared/styles";
+
+:local(.Header) {
+  background-color: transparent;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & a {
+    text-decoration: none;
+    color: $dark-blue;
+    margin: 0;
+
+    &:last-of-type {
+    }
+  }
+
+  & h1 {
+    margin: 0;
+    font-weight: 300;
+    color: $dark-blue;
+    padding: 1em;
+
+    &:first-child {
+      background-color: transparent;
+      border: 1px solid;
+      margin: 1rem;
+      padding: 1rem;
+    }
+  }
+
+  & button {
+    font-size: initial;
+    background-color: transparent;
+    border: 0px;
+    color: white;
+  }
+
+  & > *:last-child {
+    padding: 1em 0.5em;
+    border-bottom: 1px solid;
+    margin: 0 1em;
+
+    &:hover {
+      background: $dark-blue;
+      border-bottom: $dark-blue;
+      color: white;
+    }
+  }
+
+  @media only screen and (min-width: 400px) {
+    padding-right: 1em;
+  }
+}
+
+:local(.DarkHeader) {
+  @extend :local(.Header);
+  background: rgba(0, 0, 0, 0.2);
+  & a,
+  & h1 {
+    color: white;
+  }
+}

@@ -1,0 +1,149 @@
+@import "../../Shared/vars";
+
+:local(.LandingPage) {
+  margin-bottom: 10em;
+  & h1 {
+    text-align: center;
+    border: 0;
+  }
+
+  & h2 {
+    font-size: 2rem;
+    margin: 1rem 0;
+    background: transparent;
+    font-weight: 300;
+    padding: 1rem;
+    width: stretch;
+    text-align: center;
+  }
+
+  & ul {
+    list-style: square;
+    margin: 0;
+    line-height: 2;
+    margin-bottom: 4em;
+
+    & li {
+      padding: 0.5rem 0;
+    }
+  }
+}
+
+:local(.Tagline) {
+  background: $dark-blue;
+  text-transform: none;
+  padding: 1em;
+  margin: -4em 0 2em 0;
+
+  & h2 {
+    text-align: left;
+  }
+}
+
+:local(.BottomHeader) {
+  margin: 1em 0;
+  width: stretch;
+}
+
+:local(.ButtonContainer) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2em 0;
+}
+
+:local(.ImageOverlay) {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  & h1 {
+    margin: 1em;
+    padding: 1rem 1.5rem;
+    background: transparent;
+    color: $dark-blue;
+  }
+
+  & a {
+    margin-bottom: 3em;
+    border: 0;
+  }
+}
+
+:local(.WhyJoin) {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+
+  & h2 {
+    color: $dark-blue;
+  }
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0;
+  }
+
+  & p {
+    text-align: center;
+  }
+}
+
+:local(.HowItWorks) {
+  @extend :local(.WhyJoin);
+}
+:local(.MinimumRequirements) h2 {
+  color: $dark-blue;
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 960px) {
+  :local(.MinimumRequirements),
+  :local(.WhyJoin) {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  :local(.MinimumRequirements) > * {
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  :local(.WhyJoin) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    & p {
+      text-align: center;
+    }
+    & h2 {
+      grid-column: 1 / span 3;
+      width: stretch;
+      text-align: center;
+    }
+  }
+  :local(.HowItWorks) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-bottom: 8em;
+
+    & h2 {
+      grid-column: 1 / span 3;
+      align-self: end;
+    }
+  }
+}

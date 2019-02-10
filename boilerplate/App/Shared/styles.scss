@@ -1,0 +1,163 @@
+@import "./buttons";
+@import "./vars";
+@import "./card";
+@import "./forms";
+
+:local(.EditButton) {
+  background-color: #144f5a;
+  box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.1);
+  padding: 0.5em 1em;
+  display: inline-block;
+  border-radius: 3px;
+  height: fit-content;
+  position: fixed;
+  bottom: 1.5em;
+  right: 1.5em;
+
+  & a {
+    color: white;
+    border-bottom: 0;
+    font-weight: 500;
+
+    &:hover {
+      border-bottom: 1px solid #144f5a;
+      cursor: pointer;
+    }
+  }
+}
+
+@media only screen and (min-width: 700px) and (min-height: 600px) {
+  :local(.EditButton) {
+    padding: 1em;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  :local(.ProfileBlocks) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    & > div {
+      height: fit-content;
+      width: 48%;
+      margin: 1em 0;
+    }
+  }
+}
+
+:local(.AccentText) {
+  color: #144f5a;
+  font-weight: 500;
+}
+
+:local(.ContentBlock) {
+  margin: 0;
+}
+
+@media only screen and (min-width: 960px) {
+  :local(.ContentBlock) {
+    margin: 1em auto;
+    max-width: 960px;
+  }
+
+  :local(.Form) {
+    font-size: 0.9em;
+
+    & a,
+    & button {
+      font-size: 1.25em;
+    }
+  }
+}
+
+:local(.Strong) {
+  font-weight: 500;
+}
+
+:local(.Wrapper) {
+  margin-bottom: 10em;
+}
+
+@media only screen and (min-width: 768px) {
+  :local(.Wrapper) {
+    margin-left: 1em;
+
+    & > * {
+      width: 75%;
+    }
+  }
+}
+@media only screen and (min-width: 960px) {
+  :local(.Wrapper) {
+    margin: 0 auto;
+    max-width: 960px;
+
+    & > * {
+      width: 75%;
+    }
+  }
+}
+
+:local(.BorderedTitle) {
+  font-weight: 500;
+  border: 1px solid $green;
+  width: fit-content;
+  padding: 1em;
+}
+
+:local(.InfoSection) {
+  font-weight: 500;
+  font-size: 0.9em;
+  margin: 2em 0 4em 0;
+  padding: 1em;
+  border: 1px solid $green;
+  background: white;
+
+  & a {
+    color: $green;
+    border-bottom: 1px solid;
+    text-decoration: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    margin: 4em 1em;
+  }
+}
+
+:local(.WarningHeader) {
+  background-color: darkred;
+}
+
+:local(.Banner) {
+  background-color: $orange;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  margin: 2em 0;
+  display: flex;
+
+  & h2 {
+    text-align: center;
+    padding: 0;
+    color: white;
+    background-color: $orange;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  & a {
+    color: white;
+    border: 1px solid;
+    text-decoration: none;
+    padding: 1em;
+    font-weight: 500;
+  }
+}
+
+:local(.DarkHeading) {
+  color: white;
+  background: rgba(0, 0, 0, 0.66);
+  text-shadow: 2px 2px 3px black;
+}

@@ -1,0 +1,130 @@
+@import "../../Shared/vars";
+
+:local(.LandingPage) {
+  margin-bottom: 10em;
+
+  & > *:first-child {
+    filter: blur(10%);
+  }
+  & h1 {
+    color: white;
+  }
+
+  & h2 {
+    font-size: 2rem;
+    margin: 1rem 0;
+    text-transform: uppercase;
+    color: $dark-blue;
+    background: transparent;
+    font-weight: 300;
+    padding: 1rem;
+    width: stretch;
+    text-align: center;
+  }
+
+  & ul {
+    list-style: square;
+    margin: 0;
+    line-height: 2;
+    margin-bottom: 4em;
+
+    & li {
+      padding: 0.5rem 0;
+    }
+  }
+}
+
+:local(.BottomHeader) {
+  margin: 1em 0;
+  width: stretch;
+}
+
+:local(.ButtonContainer) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2em 0;
+}
+
+:local(.ImageOverlay) {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & h1 {
+    margin: 1em;
+    padding: 1rem 1.5rem;
+    background: transparent;
+    border: 1px solid;
+  }
+
+  & button {
+    margin-bottom: 3em;
+    border: 0;
+  }
+}
+
+:local(.WhyJoin) {
+  padding: 2em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0;
+  }
+}
+
+:local(.HowItWorks) {
+  @extend :local(.WhyJoin);
+}
+
+@media only screen and (min-width: 960px) {
+  :local(.MinimumRequirements),
+  :local(.WhyJoin) {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  :local(.MinimumRequirements) > * {
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  :local(.WhyJoin) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    & h2 {
+      grid-column: 1 / span 2;
+      width: stretch;
+      text-align: center;
+    }
+  }
+  :local(.HowItWorks) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    & h2 {
+      grid-column: 1 / span 3;
+    }
+
+    & p {
+      text-align: center;
+    }
+  }
+}
