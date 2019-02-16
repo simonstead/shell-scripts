@@ -25,21 +25,21 @@ echo "fg (api| test) <name> --"
 
 function api() {
     cat <<- _EOF_
-    from flask import jsonify, request
-    from application import application, mongo
-    from flask_jwt_extended import jwt_required, get_jwt_identity
-    from helpers import serialize_dictionary_list
+from flask import jsonify, request
+from application import application, mongo
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from helpers import serialize_dictionary_list
 
-    data_model = {
-            "$name": 1,
-        }
+data_model = {
+        "$name": 1,
+    }
 
-    @application.route('/$name', methods=['GET'])
-    @jwt_required
-    def $name():
-        email = get_jwt_identity()
-        $collection = mongo.db.$collection.find({}, data_model)
-        return jsonify({ 'msg': 'success', 'data': serialize_dictionary_list($collection) }), 200
+@application.route('/$name', methods=['GET'])
+@jwt_required
+def $name():
+    email = get_jwt_identity()
+    $collection = mongo.db.$collection.find({}, data_model)
+    return jsonify({ 'msg': 'success', 'data': serialize_dictionary_list($collection) }), 200
 _EOF_
 }
 
@@ -49,7 +49,7 @@ function api_test() {
 import unittest
 import app
 from application import mongo
-from test.helpers import clean_mongo, get
+from test.helpers import clean_mongo, post
 
 class Test_$name(unittest.TestCase):
     def setUp(self):
@@ -60,7 +60,8 @@ class Test_$name(unittest.TestCase):
         clean_mongo()
 
     def test_$name(self):
-        get(tester=self, route='/$name')
+        data = {}
+        post(tester=self, route='/$name', data=data)
 _EOF_
 }
 

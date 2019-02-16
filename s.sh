@@ -227,5 +227,5 @@ if [ "$1" == "g" -o "$1" == "generate" ] && [ "$2" == "app" ]; then
   echo "***Scaffolding new application $name"
   generate_app
 else
-  generate
+  generate_components
 fi
